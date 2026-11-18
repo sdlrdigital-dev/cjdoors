@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CJ Doors | Cjove | Solid Teak Doors in Tenkasi, Coimbatore &amp; Chennai</title>
+<meta name="description" content="CJ Doors crafts solid teak doors - pooja doors, carving, architrave, windows and more. Fast delivery & installation, 5-year warranty. Tenkasi, Coimbatore, Chennai.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link href="assets/responsive.css" rel="stylesheet">
+<style>
+:root{--cj-brown:#36256E;--cj-gold:#E73493;--cj-dark:#1d1340;--cj-cream:#f6f2fb;--cj-blues:#392c98;--glit:#ffd9f0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:#2b2150}
+h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif}
+.text-gold{color:var(--cj-gold)}
+.bg-cream{background:var(--cj-cream)}
+.bg-hero{background:url(assets/img/hero/light.jpg) center/cover no-repeat}
+.btn-gold{background:var(--cj-gold);color:#fff;border:0;padding:.5rem 1rem;border-radius:4px;transition:all .3s}
+.btn-gold:hover{background:var(--cj-brown);color:#fff}
+.section-pad{padding:80px 0}
+.section-pads{background:var(--cj-gold) url(assets/img/hero/notes.jpg) center/cover no-repeat;color:#fff}
+.section-title{position:relative;margin-bottom:2.5rem}
+.section-title::after{content:"";display:block;width:70px;height:3px;background:var(--cj-gold);margin:12px auto 0}
+
+/* NAVBAR + LOGO */
+.navbar{background:var(--cj-blues);backdrop-filter:blur(6px);padding:.4rem 0}
+.navbar-brand{display:flex;align-items:center;margin:0;padding:0}
+.navbar-brand img{height:75px;width:auto;max-width:220px;display:block;object-fit:contain}
+.navbar .nav-link{color:#ece7f8;padding:.5rem 1rem;border-bottom:3px solid transparent}
+.navbar .nav-link:hover{color:var(--cj-gold);border-bottom-color:var(--cj-gold);text-decoration:none}
+#hero{padding-top:84px}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden}
+#hero .hero-video,#hero .hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#hero .hero-slide{background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
+#hero .hero-slide.active{opacity:1}
+#hero .hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(120deg,rgba(29,19,64,.85),rgba(29,19,64,.35))}
+#hero .container{position:relative;z-index:3}
+.trust-bar{background:var(--cj-brown);color:#fff}
+
+/* ICONS */
+.anim-icon{font-size:2.6rem;color:var(--cj-gold);display:inline-block}
+.anim-float{animation:floatY 3s ease-in-out infinite}
+.anim-pulse{animation:pulse 2s ease-in-out infinite}
+.anim-swing{animation:swing 2.5s ease-in-out infinite;transform-origin:top center}
+.anim-spin{animation:spin 8s linear infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+@keyframes swing{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.feature-card{border:0;box-shadow:0 6px 22px rgba(0,0,0,.08);transition:transform .3s;height:100%}
+.feature-card:hover{transform:translateY(-6px)}
+.bg-placeholder{background:linear-gradient(rgba(29,19,64,.7),rgba(29,19,64,.7)),url('assets/img/doors/placeholder-bg.jpg') center/cover fixed,#2b2150;color:#fff}
+
+/* GALLERY + CATEGORY TABS */
+.cat-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:2rem}
+.cat-btn{border:2px solid var(--cj-brown);background:#fff;color:var(--cj-brown);padding:.5rem 1.1rem;border-radius:50px;font-weight:600;transition:all .25s}
+.cat-btn:hover{background:#ece6f8}
+.cat-btn.active{background:var(--cj-gold);border-color:var(--cj-gold);color:#fff;box-shadow:0 4px 14px rgba(231,52,147,.4)}
+.gallery-item{position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in;background:#e8e2f4;aspect-ratio:3/4}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.gallery-item .overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;color:#fff;background:linear-gradient(to top,rgba(29,19,64,.9),transparent 60%);opacity:0;transform:translateY(20px);transition:all .4s ease}
+.gallery-item:hover img{transform:scale(1.12) rotate(1deg)}
+.gallery-item:hover .overlay{opacity:1;transform:none}
+.gallery-item.reveal{animation:fadeUp .6s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+#galleryGrid.switching{opacity:0;transform:translateY(10px)}
+#galleryGrid{transition:opacity .25s,transform .25s}
+
+/* SLIDESHOW */
+.lb{position:fixed;inset:0;z-index:2000;background:rgba(18,10,45,.94);display:none;align-items:center;justify-content:center;padding:16px}
+.lb.open{display:flex;animation:fadeUp .3s ease}
+.lb-fig{margin:0;max-width:min(92vw,720px);text-align:center;color:#fff}
+.lb-fig img{max-width:100%;max-height:76vh;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.5);background:#e8e2f4}
+.lb-fig figcaption{margin-top:12px;font-family:Georgia,serif;font-size:1.15rem}
+.lb-fig figcaption a{margin-left:10px}
+.lb-nav,.lb-close,.lb-play{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;border-radius:50%;width:48px;height:48px;font-size:1.4rem;line-height:1;transition:background .2s}
+.lb-nav:hover,.lb-close:hover,.lb-play:hover{background:var(--cj-gold)}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}
+.lb-next{right:16px;top:50%;transform:translateY(-50%)}
+.lb-close{top:16px;right:16px;font-size:1.8rem}
+.lb-play{top:16px;left:16px}
+.lb-count{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#d6cdee;font-size:.9rem}
+
+
+/* VISIT US */
+.visit{background:linear-gradient(135deg,var(--cj-dark),var(--cj-blues));color:#fff;position:relative;overflow:hidden}
+.visit::before{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(231,52,147,.35),transparent 70%)}
+.visit-sub{color:#d6cdee}
+.visit-list{display:flex;flex-direction:column;gap:14px;height:100%}
+.visit-card{display:flex;gap:16px;padding:18px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);cursor:pointer;transition:all .3s}
+.visit-card:hover{background:rgba(255,255,255,.12)}
+.visit-card.active{border-color:var(--cj-gold);background:rgba(231,52,147,.18);transform:translateX(8px);box-shadow:0 8px 26px rgba(0,0,0,.3)}
+.visit-card h5{margin:6px 0 4px;font-size:1.3rem}
+.visit-card p{color:#d6cdee}
+.visit-ico{flex:0 0 52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--cj-gold);font-size:1.4rem}
+.visit-badge{display:inline-block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:2px 10px;border-radius:50px;background:rgba(255,255,255,.15)}
+.visit-map{position:relative;height:100%;min-height:380px;border-radius:16px;overflow:hidden;border:3px solid rgba(255,255,255,.2);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.visit-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.visit-pin{position:absolute;left:14px;top:14px;background:var(--cj-gold);color:#fff;padding:6px 14px;border-radius:50px;font-weight:600;font-size:.9rem;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.visit-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.visit-strip a{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;text-decoration:none;transition:all .3s}
+.visit-strip a:hover{background:var(--cj-gold);transform:translateY(-3px)}
+.visit-strip i{font-size:1.5rem}
+.visit-strip small{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;opacity:.8}
+@media (max-width:991px){.visit-card.active{transform:none}.visit-map{min-height:300px}}
+
+/* FAQ */
+.faq{background:linear-gradient(rgba(255,255,255,.93),rgba(255,255,255,.93)),url(assets/img/hero/light.jpg) center/cover,#fff}
+.faq-side{position:sticky;top:110px}
+.faq-kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.12em;color:#fff;background:var(--cj-gold);padding:3px 14px;border-radius:50px}
+.faq-title{margin:14px 0;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--cj-brown)}
+.faq-help{margin-top:24px;padding:20px;border-radius:14px;background:#fff;border:1px solid #e4dcf5;box-shadow:0 6px 22px rgba(54,37,110,.1)}
+.faq .accordion-item{border:0;margin-bottom:14px;border-radius:14px!important;overflow:hidden;box-shadow:0 4px 16px rgba(54,37,110,.1);background:#fff}
+.faq .accordion-button{gap:14px;padding:18px 20px;font-weight:600;font-size:1.05rem;color:var(--cj-brown);background:#fff;box-shadow:none}
+.faq .accordion-button:focus{box-shadow:0 0 0 .2rem rgba(231,52,147,.25)}
+.faq .accordion-button:not(.collapsed){background:var(--cj-brown);color:#fff}
+.faq .accordion-button:not(.collapsed)::after{filter:brightness(0) invert(1)}
+.faq-num{flex:0 0 38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;font-weight:700;background:#f1ebfc;color:var(--cj-gold);transition:all .3s}
+.faq .accordion-button:not(.collapsed) .faq-num{background:var(--cj-gold);color:#fff}
+.faq .accordion-body{padding:18px 22px 22px 72px;color:#4a3f78;border-left:4px solid var(--cj-gold);animation:fadeUp .4s ease}
+@media (max-width:991px){.faq-side{position:static}}
+@media (max-width:575px){.faq .accordion-body{padding-left:22px}}
+
+/* FOOTER */
+.site-foot{background:#120a2b;color:#cfc5ea;padding:60px 0 22px;position:relative;border-top:4px solid var(--cj-gold)}
+.site-foot a{color:#cfc5ea;text-decoration:none;transition:color .25s}
+.site-foot a:hover{color:var(--cj-gold)}
+.foot-cta{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;padding:28px 32px;margin-bottom:48px;border-radius:18px;color:#fff;background:linear-gradient(120deg,var(--cj-gold),var(--cj-brown));box-shadow:0 12px 34px rgba(231,52,147,.3)}
+.foot-cta h3{margin:0 0 4px;font-size:clamp(1.3rem,3vw,1.8rem)}
+.foot-cta .btn-light{color:var(--cj-brown)}
+.foot-cta .btn-light:hover{background:var(--cj-dark);color:#fff}
+.foot-main h6{color:#fff;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;margin-bottom:18px;position:relative;padding-bottom:10px}
+.foot-main h6::after{content:"";position:absolute;left:0;bottom:0;width:32px;height:3px;background:var(--cj-gold);border-radius:2px}
+.foot-links{list-style:none;padding:0;margin:0;font-size:.95rem}
+.foot-links li{margin-bottom:10px}
+.foot-links li a:hover{padding-left:4px}
+.foot-contact li{display:flex;gap:10px;align-items:flex-start}
+.foot-contact i{color:var(--cj-gold);margin-top:3px}
+.foot-social{display:flex;gap:10px;justify-content:center}
+@media (min-width:992px){.foot-social{justify-content:flex-start}}
+.foot-social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:1.15rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
+.foot-social a:hover{background:var(--cj-gold);color:#fff;transform:translateY(-3px)}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:.85rem}
+.foot-badges i{color:var(--cj-gold);margin-right:4px}
+@media (max-width:575px){.foot-bottom{justify-content:center;text-align:center}.foot-cta{padding:22px;text-align:center;justify-content:center}}
+
+/* GLITTER */
+#glitter{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1040}
+.shine{background:linear-gradient(100deg,currentColor 40%,#fff 50%,currentColor 60%) 0 0/250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.btn-gold,.cat-btn.active{position:relative;overflow:hidden}
+.btn-gold::after,.cat-btn.active::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:sweep 3.2s ease-in-out infinite}
+@keyframes sweep{0%{left:-80%}60%,100%{left:140%}}
+@media (prefers-reduced-motion:reduce){#glitter{display:none}.shine,.btn-gold::after,.cat-btn.active::after{animation:none}}
+
+/* WHATSAPP */
+#waToggle{position:fixed;right:20px;bottom:20px;z-index:1050;width:62px;height:62px;border-radius:50%;border:0;background:#25d366;color:#fff;font-size:2rem;animation:pulseRing 2s infinite}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+#waBox{position:fixed;right:20px;bottom:96px;z-index:1050;width:340px;max-width:calc(100vw - 40px);background:#fff;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.35);display:none;overflow:hidden}
+#waBox.open{display:block;animation:fadeUp .35s ease}
+#waBox .wa-head{background:#075e54;color:#fff;padding:14px 16px}
+#waMsgs{height:280px;overflow-y:auto;padding:14px;background:#ece5dd}
+.wa-msg{max-width:85%;padding:8px 12px;border-radius:10px;margin-bottom:8px;font-size:.9rem}
+.wa-bot{background:#fff}.wa-user{background:#dcf8c6;margin-left:auto}
+.wa-opts button{margin:0 6px 6px 0}
+</style>
+</head>
+<body>
+<canvas id="glitter" aria-hidden="true"></canvas>
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#hero" aria-label="CJ Doors"><img src="assets/img/Logo_hz.svg" alt="CJDoors"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-lg-3"><a class="btn btn-gold btn-sm" href="tel:9840255299"><i class="bi bi-telephone-fill"></i> 98402 55299</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="hero">
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero/hero1.jpg">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div id="heroSlides"></div>
+  <div class="hero-overlay"></div>
+  <div class="container text-center text-lg-start pt-5">
+    <p class="text-gold text-uppercase fw-semibold mb-2">Tenkasi &bull; Coimbatore &bull; Chennai</p>
+    <h1 class="display-3 fw-bold">Solid Teak Doors,<br>Carved to Last Generations</h1>
+    <p class="lead col-lg-6 px-0">100% teak doors made to your size. 5-year warranty on every door.</p>
+    <a href="#gallery" class="btn btn-gold btn-lg me-2 mt-2">Explore Doors</a>
+    <a href="#contact" class="btn btn-outline-light btn-lg mt-2">Get Best Price</a>
+  </div>
+</header>
+
+<section class="trust-bar py-3">
+  <div class="container"><div class="row justify-content-center text-center g-2 small fw-semibold">
+    <div class="col-6 col-md-3"><i class="bi bi-tree-fill text-gold"></i> 100% Teak Wood</div>
+    <div class="col-6 col-md-3"><i class="bi bi-shield-check text-gold"></i> 5-Year Warranty</div>
+    <div class="col-6 col-md-3"><i class="bi bi-rulers text-gold"></i> Made to Your Size</div>
+  </div></div>
+</section>
+
+<section id="about" class="section-pad">
+  <div class="container">
+    <h2 class="text-center section-title">Your Home Deserves the Teak Touch</h2>
+    <p class="text-center col-lg-8 mx-auto mb-5">CJ Doors makes solid teak doors designed and built in our own workshop. Every door is made to order &mdash; choose the size, design and finish, and we quote the best price for exactly what you want. Visit our workshop and see your door being made.</p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3"><div class="card feature-card text-center p-4"><i class="bi bi-tree anim-icon anim-float mx-auto"></i><h5 class="mt-3">Solid Teak Only</h5><p class="small mb-0">Premium seasoned teak &mdash; no veneers, no shortcuts.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card feature-card text-center p-4"><i class="bi bi-door-open anim-icon anim-swing mx-auto"></i><h5 class="mt-3">Custom Designs</h5><p class="small mb-0">Carved, panelled, glass or flush &mdash; send us a photo or sketch.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card feature-card text-center p-4"><i class="bi bi-truck anim-icon anim-pulse mx-auto"></i><h5 class="mt-3">Fast Delivery</h5><p class="small mb-0">Doorstep delivery with flexible scheduling and installation.</p></div></div>
+      <div class="col-md-6 col-lg-3"><div class="card feature-card text-center p-4"><i class="bi bi-gear-wide-connected anim-icon anim-spin mx-auto"></i><h5 class="mt-3">5-Year Warranty</h5><p class="small mb-0">Every product is backed by a 5-year warranty.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-placeholder section-pad text-center">
+  <div class="container">
+    <h2 class="shine">Made to Order, Crafted in Teak</h2>
+    <p class="col-lg-7 mx-auto">Tell us what you need &mdash; we&rsquo;ll craft it. Pooja doors, carving, architrave, windows, polished bedroom doors and more.</p>
+    <div class="row g-3 justify-content-center mt-3">
+      <div class="col-6 col-md-3"><i class="bi bi-door-closed anim-icon anim-float"></i><div>Main Doors</div></div>
+      <div class="col-6 col-md-3"><i class="bi bi-brightness-high anim-icon anim-spin"></i><div>Pooja Doors</div></div>
+      <div class="col-6 col-md-3"><i class="bi bi-house-door anim-icon anim-pulse"></i><div>Bedroom Doors</div></div>
+      <div class="col-6 col-md-3"><i class="bi bi-window anim-icon anim-swing"></i><div>Teak Windows</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY: category buttons switch the grid; click an image for a slideshow -->
+<section id="gallery" class="section-pad bg-cream">
+  <div class="container">
+    <h2 class="text-center section-title">Our Door Collection</h2>
+    <div class="cat-tabs" id="catTabs" role="tablist" aria-label="Door categories"></div>
+    <div class="row g-4" id="galleryGrid" aria-live="polite"></div>
+    <div class="text-center mt-5">
+      <button id="loadMoreBtn" class="btn btn-gold btn-lg px-5"><i class="bi bi-arrow-down-circle me-2"></i>Load more</button>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="section-pad section-pads">
+  <div class="container">
+    <h2 class="text-center section-title">What Our Customers Say</h2>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="card feature-card p-4 text-dark"><div class="text-gold mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>The main door came out exactly as we wanted and was delivered and installed on the committed date. The quality of the teak is clear.</p><strong>Rajendaran</strong></div></div>
+      <div class="col-md-4"><div class="card feature-card p-4 text-dark"><div class="text-gold mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>We visited the workshop before delivery and were happy with the finish. A few customisations were needed and they handled it well.</p><strong>Kiran</strong></div></div>
+      <div class="col-md-4"><div class="card feature-card p-4 text-dark"><div class="text-gold mb-2">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Authentic teak doors, good workmanship and fair pricing. Friendly team that is easy to do business with.</p><strong>Amir</strong></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section-pad faq">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <div class="faq-side">
+          <span class="faq-kicker">FAQ</span>
+          <h2 class="faq-title">Questions We Hear Often</h2>
+          <p>Everything you need to know before ordering your teak door. Can&rsquo;t find your answer? Ask us directly.</p>
+          <div class="faq-help">
+            <h5><i class="bi bi-chat-heart-fill text-gold me-2"></i>Still have a question?</h5>
+            <p class="small mb-3">Our team replies in minutes.</p>
+            <a class="btn btn-gold btn-sm" href="https://wa.me/919845867332" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1"></i>WhatsApp</a>
+            <a class="btn btn-outline-secondary btn-sm" href="tel:9840255299"><i class="bi bi-telephone me-1"></i>Call us</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="accordion" id="faqAcc">
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#f1"><span class="faq-num">01</span>How do I place an order?</button></h3>
+        <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc"><div class="accordion-body">Tap WhatsApp or &ldquo;Ask price&rdquo; on any door you like. Our team helps you choose the size and finish, shares the price and confirms your order. You are also welcome to visit us in Tenkasi (Factory), Coimbatore (Head Office) or Chennai (Branch).</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2"><span class="faq-num">02</span>Why is there no price on the website?</button></h3>
+        <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Every door is made to order, and the size, finish and carving you choose all change the cost. We quote the best price for exactly what you want &mdash; just ask on WhatsApp.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f3"><span class="faq-num">03</span>What wood do you use?</button></h3>
+        <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Only solid teak, one of the finest timbers in India.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f4"><span class="faq-num">04</span>Can I customise the size, design or finish?</button></h3>
+        <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Yes. Most designs can be made to your measurements and in the finish you prefer. Send us a photo or sketch on WhatsApp and we will tell you what is possible.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f5"><span class="faq-num">05</span>How long will my door take?</button></h3>
+        <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Standard designs are usually ready within about a week. Custom designs take longer, usually around a month. We confirm the timeline before you order.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f7"><span class="faq-num">06</span>What warranty do you offer?</button></h3>
+        <div id="f7" class="accordion-collapse collapse" data-bs-parent="#faqAcc"><div class="accordion-body">Every product comes with a 5-year warranty.</div></div>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section-pad visit">
+  <div class="container position-relative">
+    <h2 class="text-center section-title">Visit Us</h2>
+    <p class="text-center col-lg-7 mx-auto mb-5 visit-sub">See the teak, meet the craftsmen and plan your door with us. Pick a location to see it on the map.</p>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-5">
+        <div class="visit-list">
+          <div class="visit-card active" data-q="Tenkasi, Tamil Nadu" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438.84126429838443!2d77.26593496826567!3d9.0032586182505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0681610f47cda7%3A0xfccc11e79e9223a4!2s3%2F337%2F3%2C%20link%20road%2C%20Tenpottai%2C%20Kanakkupillaivalasai%2C%20Tamil%20Nadu%20627803!5e0!3m2!1sen!2sin!4v1794818549193!5m2!1sen!2sin" tabindex="0" role="button">
+            <div class="visit-ico"><i class="bi bi-tools"></i></div>
+            <div class="flex-grow-1">
+              <span class="visit-badge">Factory</span>
+              <h5>Tenkasi</h5>
+              <p class="small mb-2">Where every CJ door is designed and built. See your door being made.</p>
+              <a class="btn btn-gold btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=9.0032586,77.2659350" target="_blank" rel="noopener"><i class="bi bi-sign-turn-right me-1"></i>Directions</a>
+              <a class="btn btn-outline-light btn-sm" href="tel:9840255299"><i class="bi bi-telephone me-1"></i>Call</a>
+            </div>
+          </div>
+          <div class="visit-card" data-q="Coimbatore, Tamil Nadu" data-map="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.74177055268825!2d76.98137269549814!3d11.048497398279958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85871f7bfeb5f%3A0xf1e61ad47a95fb34!2s14%2FA3%2C%20Rabindranath%20Tagore%20Rd%2C%20Maniyakarampalayam%2C%20Venkatasamy%20Nagar%2C%20Ganapathy%2C%20Coimbatore%2C%20Tamil%20Nadu%20641006!5e0!3m2!1sen!2sin!4v1794818713232!5m2!1sen!2sin" tabindex="0" role="button">
+            <div class="visit-ico"><i class="bi bi-building"></i></div>
+            <div class="flex-grow-1">
+              <span class="visit-badge">Head Office</span>
+              <h5>Coimbatore</h5>
+              <p class="small mb-2">Our main office. Discuss sizes, designs and finishes with the team.</p>
+              <a class="btn btn-gold btn-sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=11.0484974,76.9813727" target="_blank" rel="noopener"><i class="bi bi-sign-turn-right me-1"></i>Directions</a>
+              <a class="btn btn-outline-light btn-sm" href="tel:9840255299"><i class="bi bi-telephone me-1"></i>Call</a>
+            </div>
+          </div>
+          <div class="visit-card" data-q="Chennai, Tamil Nadu" data-map="https://www.google.com/maps?q=Chennai,+Tamil+Nadu&amp;output=embed" tabindex="0" role="button">
+            <div class="visit-ico"><i class="bi bi-geo-alt"></i></div>
+            <div class="flex-grow-1">
+              <span class="visit-badge">Branch Office</span>
+              <h5>Chennai</h5>
+              <p class="small mb-2">Walk in to see samples and get a quote for your Chennai project.</p>
+              <a class="btn btn-gold btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=Chennai,+Tamil+Nadu" target="_blank" rel="noopener"><i class="bi bi-sign-turn-right me-1"></i>Directions</a>
+              <a class="btn btn-outline-light btn-sm" href="tel:9840255299"><i class="bi bi-telephone me-1"></i>Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="visit-map">
+          <iframe id="visitMap" title="CJ Doors location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438.84126429838443!2d77.26593496826567!3d9.0032586182505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0681610f47cda7%3A0xfccc11e79e9223a4!2s3%2F337%2F3%2C%20link%20road%2C%20Tenpottai%2C%20Kanakkupillaivalasai%2C%20Tamil%20Nadu%20627803!5e0!3m2!1sen!2sin!4v1794818549193!5m2!1sen!2sin"></iframe>
+          <div class="visit-pin" id="visitPin"><i class="bi bi-geo-alt-fill"></i> <span>Factory - Tenkasi</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="visit-strip mt-4">
+      <a href="tel:9840255299"><i class="bi bi-telephone-fill"></i><span><small>Call us</small>98402 55299</span></a>
+      <a href="https://wa.me/919845867332" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i><span><small>WhatsApp</small>Chat with sales</span></a>
+      <a href="mailto:cjove.com@gmail.com"><i class="bi bi-envelope-fill"></i><span><small>Email</small>cjove.com@gmail.com</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-cta">
+      <div>
+        <h3>Ready for your dream teak door?</h3>
+        <p class="mb-0">Share the size and design and we will quote the best price.</p>
+      </div>
+      <a class="btn btn-light btn-lg fw-semibold" href="https://wa.me/919845867332" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>Get best price</a>
+    </div>
+
+    <div class="row g-4 foot-main">
+      <div class="col-12 col-lg-4 text-center text-lg-start">
+        <a class="d-inline-block mb-3" href="#hero" aria-label="CJ Doors"><img src="assets/img/Logo_hz.svg" alt="CJ Doors logo" style="width:clamp(120px,40vw,230px);height:auto"></a>
+        <p>Solid teak doors designed and built in our own workshop. 100% teak, fast delivery and a 5-year warranty.</p>
+        <div class="foot-social">
+          <!-- <a href="https://www.facebook.com/cjdoors.in" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a> -->
+          <a href="https://www.instagram.com/cjdoors.in" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/@cjdoors.in" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="https://wa.me/919845867332" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Quick Links</h6>
+        <ul class="foot-links">
+          <li><a href="#about">About</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h6>Shop by Category</h6>
+        <ul class="foot-links">
+          <li><a href="#gallery" data-cat="Teak Carving">Teak Carving</a></li>
+          <li><a href="#gallery" data-cat="Pooja Doors">Pooja Doors</a></li>
+          <li><a href="#gallery" data-cat="Teak Architrave">Teak Architrave</a></li>
+          <li><a href="#gallery" data-cat="Teak Polish">Teak Polish</a></li>
+          <li><a href="#gallery" data-cat="Teak Windows">Teak Windows</a></li>
+          <li><a href="#gallery" data-cat="Bedroom Polish Doors">Bedroom Polish Doors</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-3">
+        <h6>Get in Touch</h6>
+        <ul class="foot-links foot-contact">
+          <li><i class="bi bi-telephone-fill"></i><a href="tel:9840255299">98402 55299</a> / <a href="tel:7010655299">70106 55299</a></li>
+          <li><i class="bi bi-envelope-fill"></i><a href="mailto:cjove.com@gmail.com" class="text-break">cjove.com@gmail.com</a></li>
+          <li><i class="bi bi-geo-alt-fill"></i><span>Factory &ndash; Tenkasi<br>Head Office &ndash; Coimbatore<br>Branch Office &ndash; Chennai</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> CJ Doors &amp; Cjove. All rights reserved.</span>
+      <span class="foot-badges"><i class="bi bi-tree-fill"></i> 100% Teak <i class="bi bi-shield-check ms-3"></i> 5-Year Warranty <i class="bi bi-rulers ms-3"></i> Made to Order</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SLIDESHOW -->
+<div id="lb" class="lb" aria-hidden="true" role="dialog" aria-label="Door slideshow">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-play" id="lbPlay" aria-label="Pause slideshow"><i class="bi bi-pause-fill"></i></button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#10094;</button>
+  <figure class="lb-fig"><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#10095;</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<button id="waToggle" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></button>
+<div id="waBox">
+  <div class="wa-head d-flex justify-content-between align-items-center">
+    <div><strong>CJ Doors</strong><br><small>Typically replies in minutes</small></div>
+    <button class="btn-close btn-close-white" id="waClose" aria-label="Close"></button>
+  </div>
+  <div id="waMsgs"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const SITE = { name:'CJ Doors', email:'cjove.com@gmail.com', phone:'09845531618', whatsapp:'919845867332', locations:['Tenkasi','Coimbatore','Chennai'] };
+
+function doorPlaceholder(label){
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='800'><rect width='100%' height='100%' fill='#e8e2f4'/><rect x='170' y='120' width='260' height='560' rx='8' fill='#5a43a3' stroke='#36256E' stroke-width='8'/><rect x='200' y='155' width='200' height='200' fill='#7a63c0' stroke='#36256E' stroke-width='4'/><rect x='200' y='390' width='200' height='255' fill='#7a63c0' stroke='#36256E' stroke-width='4'/><circle cx='400' cy='400' r='12' fill='#E73493'/><text x='300' y='740' font-size='28' text-anchor='middle' fill='#36256E' font-family='Georgia'>${label}</text></svg>`;
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+
+/* HERO slideshow */
+(function(){
+  const imgs=['assets/img/hero/hero1.jpg','assets/img/hero/hero2.jpg','assets/img/hero/hero3.jpg'];
+  const wrap=document.getElementById('heroSlides');
+  imgs.forEach((s,i)=>{const d=document.createElement('div');d.className='hero-slide'+(i?'':' active');d.style.backgroundImage=`url('${s}')`;wrap.appendChild(d)});
+  let c=0;setInterval(()=>{wrap.children[c].classList.remove('active');c=(c+1)%imgs.length;wrap.children[c].classList.add('active')},5000);
+  const v=document.getElementById('heroVideo');
+  const fallback=()=>{v.style.display='none';wrap.style.zIndex=0};
+  v.addEventListener('error',fallback);v.querySelector('source').addEventListener('error',fallback);
+  const p=v.play();if(p&&p.catch)p.catch(fallback);
+  wrap.style.position='absolute';wrap.style.inset='0';v.style.zIndex=1;v.style.position='absolute';
+})();
+
+/* GALLERY: categories.
+   Images: assets/img/doors/<folder>/1.png, 2.png ... (missing ones show a placeholder).
+   Add or remove names to change how many doors each category shows. */
+const carvingBase=['Royal Carved Main Door','Heritage Carved Door','Floral Carved Panel','Peacock Carved Door','Elephant Carved Door','Gothic Arch Door','Carved Double Door','Traditional Motif Door'];
+const CATEGORIES=[
+  {id:'pooja',label:'Pooja Doors',folder:'pooja',items:['Jaali Pooja Door','Om Carved Pooja Door','Mandir Front Door','Temple Style Door','Arched Pooja Door','Double-Leaf Pooja Door','Brass Bell Pooja Door','Lotus Carved Pooja Door']},
+  {id:'carving',label:'Teak Carving',folder:'carving',items:[...carvingBase,...carvingBase,...carvingBase,...carvingBase,...carvingBase]},
+  {id:'architrave',label:'Teak Architrave',folder:'architrave',items:['Arched Architrave','Carved Architrave']}, //,'Fluted Architrave','Arched Architrave','Pillar Architrave','Window Architrave','Heritage Architrave'
+  {id:'polish',label:'Teak Polish',folder:'polish',items:['Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish','PU Gloss Finish','Matt Finish Door','Walnut Stain Door','Honey Teak Finish','Dark Mahogany Finish','Antique Finish Door','Satin Finish Door', 'Natural Melamine Finish']},
+  {id:'windows',label:'Teak Windows',folder:'windows',items:['Panel Teak Window']},//
+  {id:'windows',label:'Teak Plain',folder:'plain',items:['Fine Teak Plain','French Teak Plain','Grill Teak Plain','Casement Teak Plain','Bay Teak Plain','Modern Teak Plain']},
+  {id:'statue',label:'Teak Statue',folder:'statue',items:['Arched Statue']},
+  {id:'bedroom',label:'Bedroom Polish Doors',folder:'bedroom',items:['Flush Bedroom Door','Classic Four-Panel Door','Modern Slatted Door','Cane Inset Door','Two-Panel Polished Door','Louvred Bedroom Door','Glass Insert Door','Colonial Bedroom Door','Flush Bedroom Door','Classic Four-Panel Door','Modern Slatted Door','Cane Inset Door','Two-Panel Polished Door','Louvred Bedroom Door','Stripe Insert Door' ]}
+];
+const PER_PAGE=4;
+let cat=CATEGORIES[0],shown=0;
+const grid=document.getElementById('galleryGrid'),loadBtn=document.getElementById('loadMoreBtn'),tabs=document.getElementById('catTabs');
+
+CATEGORIES.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.className='cat-btn'+(i?'':' active');b.textContent=c.label;b.setAttribute('role','tab');b.setAttribute('aria-selected',i?'false':'true');
+  b.onclick=()=>{
+    if(c===cat)return;
+    tabs.querySelectorAll('.cat-btn').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false')});
+    b.classList.add('active');b.setAttribute('aria-selected','true');
+    grid.classList.add('switching');
+    setTimeout(()=>{cat=c;shown=0;grid.innerHTML='';loadMore();grid.classList.remove('switching')},250);
+  };
+  tabs.appendChild(b);
+});
+
+function loadMore(all){
+  const next=all?cat.items.length:Math.min(shown+PER_PAGE,cat.items.length);
+  for(let i=shown;i<next;i++){
+    const name=cat.items[i],col=document.createElement('div');
+    col.className='col-6 col-md-4 col-lg-3';
+    col.innerHTML=`<div class="gallery-item reveal" style="animation-delay:${(i-shown)*.08}s">
+      <img src="assets/img/doors/${cat.folder}/${i+1}.png" alt="${name}" loading="lazy">
+      <div class="overlay"><h6 class="mb-1">${name}</h6><small>${cat.label} &bull; Made to order</small>
+      <a class="btn btn-gold btn-sm mt-2 align-self-start" target="_blank" rel="noopener" href="https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent('Hi CJ Doors, I am interested in the '+name+' ('+cat.label+'). Please share price and details.')}">Ask price</a></div></div>`;
+    const img=col.querySelector('img');
+    img.onerror=()=>{img.onerror=null;img.src=doorPlaceholder(name)};
+    col.querySelector('.gallery-item').addEventListener('click',e=>{ if(e.target.closest('a'))return; openSlideshow(i); });
+    grid.appendChild(col);
+  }
+  shown=next;
+  loadBtn.style.display=shown>=cat.items.length?'none':'';
+}
+loadBtn.addEventListener('click',()=>loadMore(true));
+loadMore();
+
+/* SLIDESHOW of the current tab */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),
+      lbCount=document.getElementById('lbCount'),lbPlay=document.getElementById('lbPlay');
+let lbIndex=0,lbTimer=null,lbPlaying=true;
+
+function showSlide(i){
+  const n=cat.items.length;
+  lbIndex=(i+n)%n;
+  const name=cat.items[lbIndex];
+  lbImg.onerror=()=>{lbImg.onerror=null;lbImg.src=doorPlaceholder(name)};
+  lbImg.src=`assets/img/doors/${cat.folder}/${lbIndex+1}.png`;
+  lbImg.alt=name;
+  const msg=encodeURIComponent('Hi CJ Doors, I am interested in the '+name+' ('+cat.label+'). Please share price and details.');
+  lbCap.innerHTML=`${name} <a class="btn btn-gold btn-sm" target="_blank" rel="noopener" href="https://wa.me/${SITE.whatsapp}?text=${msg}">Ask price</a>`;
+  lbCount.textContent=`${cat.label} \u2022 ${lbIndex+1} / ${n}`;
+}
+function stopAuto(){ clearInterval(lbTimer); lbTimer=null; }
+function startAuto(){ stopAuto(); if(lbPlaying) lbTimer=setInterval(()=>showSlide(lbIndex+1),3500); }
+function openSlideshow(i){
+  lbPlaying=true; lbPlay.innerHTML='<i class="bi bi-pause-fill"></i>';
+  showSlide(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden'; startAuto();
+}
+function closeSlideshow(){
+  lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+  document.body.style.overflow=''; stopAuto();
+}
+const go=d=>{ showSlide(lbIndex+d); startAuto(); };
+
+document.getElementById('lbPrev').onclick=()=>go(-1);
+document.getElementById('lbNext').onclick=()=>go(1);
+document.getElementById('lbClose').onclick=closeSlideshow;
+lbPlay.onclick=()=>{
+  lbPlaying=!lbPlaying;
+  lbPlay.innerHTML=lbPlaying?'<i class="bi bi-pause-fill"></i>':'<i class="bi bi-play-fill"></i>';
+  lbPlay.setAttribute('aria-label',lbPlaying?'Pause slideshow':'Play slideshow');
+  lbPlaying?startAuto():stopAuto();
+};
+lb.addEventListener('click',e=>{ if(e.target===lb) closeSlideshow(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeSlideshow();
+  if(e.key==='ArrowLeft')go(-1);
+  if(e.key==='ArrowRight')go(1);
+});
+let tx=0;
+lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx; if(Math.abs(d)>50) go(d<0?1:-1);});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+
+/* VISIT US: card selects the map */
+(function(){
+  const cards=document.querySelectorAll('.visit-card'),map=document.getElementById('visitMap'),pin=document.querySelector('#visitPin span');
+  function pick(c){
+    cards.forEach(x=>x.classList.remove('active'));c.classList.add('active');
+    map.src='https://www.google.com/maps?q='+encodeURIComponent(c.dataset.q)+'&output=embed';
+    pin.textContent=c.querySelector('.visit-badge').textContent+' - '+c.querySelector('h5').textContent;
+  }
+  cards.forEach(c=>{
+    c.addEventListener('click',e=>{if(e.target.closest('a'))return;pick(c)});
+    c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(c)}});
+  });
+})();
+
+/* FOOTER category links switch the gallery tab */
+document.querySelectorAll('[data-cat]').forEach(a=>a.addEventListener('click',()=>{
+  const b=[...document.querySelectorAll('.cat-btn')].find(x=>x.textContent===a.dataset.cat);
+  if(b)b.click();
+}));
+
+/* GLITTER */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const cv=document.getElementById('glitter'),ctx=cv.getContext('2d');
+  const colors=['#ffffff','#ffd9f0','#E73493','#ffe9a8','#c9b8ff'];
+  let W,H,parts=[];
+  const resize=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight};
+  resize();addEventListener('resize',resize);
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const make=(x,y,burst)=>({x,y,vx:burst?rnd(-1.2,1.2):rnd(-.15,.15),vy:burst?rnd(-1.4,.4):rnd(.1,.45),
+    r:burst?rnd(2,5):rnd(1.5,5),life:0,max:burst?rnd(30,60):rnd(200,420),c:colors[(Math.random()*colors.length)|0],ph:rnd(0,6.28)});
+  function star(x,y,r,rot){ctx.beginPath();for(let i=0;i<8;i++){const a=rot+i*Math.PI/4,d=i%2?r*.3:r;ctx.lineTo(x+Math.cos(a)*d,y+Math.sin(a)*d)}ctx.closePath();ctx.fill()}
+  let last=0;
+  addEventListener('pointermove',e=>{const t=performance.now();if(t-last<35)return;last=t;for(let i=0;i<2;i++)parts.push(make(e.clientX,e.clientY,true))});
+  (function loop(){
+    ctx.clearRect(0,0,W,H);
+    if(parts.length<90&&Math.random()<.5)parts.push(make(rnd(0,W),rnd(-10,H),false));
+    parts=parts.filter(p=>p.life<p.max);
+    for(const p of parts){
+      p.life++;p.x+=p.vx;p.y+=p.vy;p.ph+=.12;
+      const f=p.life/p.max,a=Math.sin(Math.PI*f)*(.55+.45*Math.sin(p.ph));
+      ctx.globalAlpha=Math.max(0,a);ctx.fillStyle=p.c;ctx.shadowColor=p.c;ctx.shadowBlur=8;
+      star(p.x,p.y,p.r,p.ph*.3);
+    }
+    ctx.globalAlpha=1;ctx.shadowBlur=0;
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* WHATSAPP BOT */
+(function(){
+  const box=document.getElementById('waBox'),msgs=document.getElementById('waMsgs'),lead={type:'',city:'',name:''};let started=false;
+  const add=(h,w='bot')=>{const d=document.createElement('div');d.className='wa-msg '+(w==='bot'?'wa-bot':'wa-user');d.innerHTML=h;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight};
+  const opts=(list,cb)=>{const w=document.createElement('div');w.className='wa-opts';list.forEach(o=>{const b=document.createElement('button');b.className='btn btn-sm btn-outline-success';b.textContent=o;b.onclick=()=>{w.remove();add(o,'user');cb(o)};w.appendChild(b)});msgs.appendChild(w);msgs.scrollTop=msgs.scrollHeight};
+  const input=(ph,cb)=>{const f=document.createElement('form');f.className='input-group input-group-sm mb-2';f.innerHTML=`<input class="form-control" placeholder="${ph}" required><button class="btn btn-success">Send</button>`;f.onsubmit=e=>{e.preventDefault();const v=f.querySelector('input').value.trim();f.remove();add(v,'user');cb(v)};msgs.appendChild(f);f.querySelector('input').focus()};
+  function start(){
+    add('Hi! Welcome to <b>CJ Doors</b> &#128075;<br>What are you looking for?');
+    opts(CATEGORIES.map(c=>c.label).concat('Custom Design'),t=>{lead.type=t;add('Great choice! Which city are you in?');
+      opts(SITE.locations.concat('Other'),c=>{lead.city=c;add('May I have your name?');
+        input('Your name',n=>{lead.name=n;add(`Thanks ${n}! Tap below to continue on WhatsApp with our sales team.`);
+          const text=`Hi CJ Doors, I am ${lead.name} from ${lead.city}. I am looking for: ${lead.type}. Please share details and price.`;
+          add(`<a class="btn btn-success btn-sm" target="_blank" rel="noopener" href="https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(text)}"><i class="bi bi-whatsapp"></i> Continue on WhatsApp</a>`);
+          add(`Or email us at <a href="mailto:${SITE.email}">${SITE.email}</a>`)})})});
+  }
+  document.getElementById('waToggle').onclick=()=>{box.classList.toggle('open');if(!started){started=true;start()}};
+  document.getElementById('waClose').onclick=()=>box.classList.remove('open');
+})();
+</script>
+</body>
+</html>
